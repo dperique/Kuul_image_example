@@ -1,0 +1,28 @@
+apiVersion: batch/v1beta1
+kind: CronJob
+metadata:
+  name: job2-staging
+  namespace: default
+spec:
+  schedule: "30 * * * *"
+  concurrencyPolicy: Forbid
+  successfulJobsHistoryLimit: 2
+  failedJobsHistoryLimit: 2
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          nodeSelector:
+            kuul-type: periodic
+          securityContext:
+            runAsUser: 1000
+            fsGroup: 0
+          containers:
+          - name: job2-staging
+            image: dperique/example_kuul_image:v3
+            imagePullPolicy: IfNotPresent
+            workingDir: "/home/ubuntu/periodics"
+            command: [ "./print_more.sh", "staging2" ]
+          restartPolicy: Never
+          imagePullSecrets:
+            - name: mypullsecret
