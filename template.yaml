@@ -19,7 +19,7 @@ spec:
             fsGroup: 0
           containers:
           - name: THE_NAME
-            image: my.docker-registry.com/my-kuul-image:v1
+            image: dperique/example_kuul_image:v3
             imagePullPolicy: IfNotPresent
             workingDir: "/home/ubuntu/periodics"
             command: [ "./THE_SCRIPT", "THE_TARGET" ]

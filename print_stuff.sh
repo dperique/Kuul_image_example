@@ -7,3 +7,5 @@ set -x
 echo "I can ping something on the Internet"
 ping -c 5 www.google.com
 set +x
+
+echo "Then I can print my first parameter: $1"
