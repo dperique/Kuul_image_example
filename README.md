@@ -20,11 +20,11 @@ the screen).
 ```
 # Build the image using the tag "v3" for example.
 #
-docker build -t kuul:v3 .
+docker build -t example_kuul_image:v3 .
 
 # Run container build from the image as a daemon.
 #
-docker run --name mycont -d kuul:v3
+docker run --name mycont -d example_kuul_image:v3
 
 # Check the logs to see if it did the right thing.
 #
@@ -51,6 +51,13 @@ docker rmi ...
 #
 docker build -t my.docker-registry.com/kuul:v3 .
 docker push my.docker-registry.com/kuul:v3
+
+# If your user name is "myusername" do this and your image will be pushed to
+# docker.io:
+#
+docker login
+docker build -t myusername/example_kuul_image:v3 .
+docker push myusername/example_kuul_image:v3
 ```
 
 ## Debugging the image on Kubernetes
