@@ -55,14 +55,15 @@ docker push my.docker-registry.com/kuul:v3
 
 ## Debugging the image on Kubernetes
 
-Build your Kubernetes CronJob using the sample template.yaml file in this repo, run it
-on any k8s cluster and debug it.  Once it's ready, you can then add it to your Kuul k8s cluster.
+Create and `kubectl apply ...` your Kubernetes CronJob using the sample template.yaml file in this
+repo, run it on any k8s cluster and debug it.  Once it's ready, you can then add it to your Kuul
+k8s cluster.
 
 NOTES:
 
 * If you don't have a docker registry, you can build the docker image on one of your
   k8s nodes so that the image is already in the docker instance running on that node.
-  You will have to use a nodeSelector to get your Pod run on the node that has your
+  You will have to use a nodeSelector to get your Pod to run on the node that has your
   image.
 * If your image is already built, you can use the docker save/load commands to add your
   image to a k8s node directly:
@@ -70,4 +71,4 @@ NOTES:
       docker image
     * Run `docker load -i my-image.tgz` on one of your k8s nodes
 * If you use one of these methods, you will have to modify your template.yaml so that
-  the image is fetched from the node and not a docker registry.
+  the image is fetched from the k8s node and not a docker registry.
