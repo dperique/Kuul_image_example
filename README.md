@@ -107,13 +107,14 @@ $ kubectl get cronjob
 NAME              KIND
 job1-staging      CronJob.v1beta1.batch
 
-# Using the `-o json` option will get more information.
-# But I'd much rather use an interface like k9s (https://github.com/derailed/k9s)
-# to display the CronJobs.
-#
-$ kubectl get cronjob job1-staging -o json
+$ kubectl get cronjob job1-staging
+NAME              SCHEDULE     SUSPEND   ACTIVE    LAST SCHEDULE   AGE
+job1-staging      15 * * * *   False     0         <none>          10s
+job2-staging      30 * * * *   False     0         <none>          3s
 ...
 ```
+
+After a job runs, you'll see the "LAST SCHEDULE" field change.
 
 Eventually, your job will run and you will see this.  You can then get the logs.
 
